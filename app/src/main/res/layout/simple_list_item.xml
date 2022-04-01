@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#1A1818"
+    android:paddingStart="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:paddingStart="0dp">
+
+        <TextView
+            android:id="@+id/good_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_list_item"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:lineSpacingExtra="5sp"
+            android:gravity="top"
+            android:translationY="-2.62sp"/>
+
+        <TextView
+            android:id="@+id/deprecated_sale_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/good_name_textview"
+            android:text="@string/sale_deprecated"
+            android:textSize="16sp"
+            android:textColor="#EE3D3D"
+            android:lineSpacingExtra="5sp"
+            android:translationY="-2.62sp"
+            android:gravity="top"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/quantity_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFeatureSettings="pnum, lnum"
+            android:gravity="center_horizontal|top"
+            android:lineSpacingExtra="4sp"
+            android:text="@string/quantity_list_item"
+            android:textColor="#1A1818"
+            android:textSize="14sp"
+            android:translationY="-1.8sp"
+            android:background="@drawable/chips"/>
+
+        <TextView
+            android:id="@+id/good_price_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/price_list_item"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="5sp"
+            android:gravity="right|center_vertical"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_top"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@drawable/divider_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

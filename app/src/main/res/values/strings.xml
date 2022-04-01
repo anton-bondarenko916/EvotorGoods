@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EvotorGoods</string>
+    <string name="title_list_item">Коричневые ботинки-дезерты из кожи\nнаппа</string>
+    <string name="quantity_list_item">24 шт</string>
+    <string name="price_list_item">9 900,00 P</string>
+    <string name="sale_deprecated">Запрет продажи</string>
+    <string name="goods">Товары</string>
+</resources>
