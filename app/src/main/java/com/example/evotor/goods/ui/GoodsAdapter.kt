@@ -1,6 +1,5 @@
 package com.example.evotor.goods.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import com.example.evotor.goods.Constants
 import com.example.evotor.goods.R
 import com.example.evotor.goods.databinding.SimpleListItemBinding
 import com.example.evotor.goods.entity.Good
+import java.math.BigDecimal
 
 class GoodsAdapter : RecyclerView.Adapter<GoodsAdapter.GoodsViewHolder>() {
 
@@ -36,9 +36,9 @@ class GoodsAdapter : RecyclerView.Adapter<GoodsAdapter.GoodsViewHolder>() {
             }
 
             if (good.measureName == "шт") {
-                quantityTextview.text = "${good.quantity.toInt()}${good.measureName}"
+                quantityTextview.text = "${good.quantity ?: BigDecimal.ZERO}${good.measureName}"
             } else {
-                quantityTextview.text = "${good.quantity}${good.measureName}"
+            quantityTextview.text = "${good.quantity ?: BigDecimal.ZERO}${good.measureName}"
             }
 
             goodPriceTextview.text = "${good.price} P."

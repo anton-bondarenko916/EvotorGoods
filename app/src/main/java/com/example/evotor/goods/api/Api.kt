@@ -9,7 +9,5 @@ import retrofit2.http.Path
 interface Api {
     @GET("stores/{shop-uuid}/products")
     suspend fun getGoods(
-        @Path("shop-uuid") shopUUID: String,
-        @Header("Authorization") token: String
-        ): Response<Items>
+        @Path("shop-uuid") shopUUID: String): Response<Items>
 }

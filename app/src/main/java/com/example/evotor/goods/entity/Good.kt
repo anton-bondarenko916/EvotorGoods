@@ -1,16 +1,15 @@
 package com.example.evotor.goods.entity
 
 import com.google.gson.annotations.SerializedName
+import java.math.BigDecimal
 
 data class Good(
     @SerializedName("name")
     val name: String,
-    //TODO BigDecimal
     @SerializedName("price")
-    val price: Double,
-    //TODO BigDecimal, если quantity не приходит, то подставляем 0
-    @SerializedName("cost_price")
-    val quantity: Double,
+    val price: BigDecimal,
+    @SerializedName("quantity")
+    val quantity: BigDecimal?,
     @SerializedName("measure_name")
     val measureName: String,
     @SerializedName("allow_to_sell")

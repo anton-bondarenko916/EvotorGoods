@@ -23,7 +23,6 @@ class GoodsListFragment: Fragment() {
     private lateinit var repository: Repository
     private lateinit var viewModel: GoodsListViewModel
 
-    //TODO Инициализация происходит позже создания фрагмента (иначе краш)
     private val adapter by lazy { GoodsAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,7 @@ class GoodsListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FrgmentGoodsBinding.inflate(inflater, container, false)
-        viewModel.getGoods(Constants.SHOP_UUID, Constants.TOKEN)
+        viewModel.getGoods(Constants.SHOP_UUID)
         observeToGoods()
         return binding.root
     }
@@ -56,7 +55,6 @@ class GoodsListFragment: Fragment() {
     }
 
     private fun observeToGoods() {
-        //TODO Обрабатываем события, происходящие с нашим запросов во viewmodel
         viewModel.observeGoodsResponse().observe(viewLifecycleOwner) { event ->
             when(event.status) {
                 Status.LOADING -> {
@@ -72,13 +70,5 @@ class GoodsListFragment: Fragment() {
                 }
             }
         }
-//        viewModel.goodsResponse.observe(viewLifecycleOwner) { goodsResponse ->
-//                if(goodsResponse.isSuccessful) {
-//                    binding.loadGoodsProgressbar.visibility = View.GONE
-//                    goodsResponse.body()?.items?.let { initRecyclerView(it) }
-//                } else {
-//                    //TODO: add read from database
-//                }
-//        }
     }
 }
