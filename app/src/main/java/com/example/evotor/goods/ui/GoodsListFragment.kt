@@ -11,8 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.evotor.goods.Constants
 import com.example.evotor.goods.databinding.FrgmentGoodsBinding
-import com.example.evotor.goods.entity.Good
-import com.example.evotor.goods.entity.Items
+import com.example.evotor.goods.entity.ApiItems
 import com.example.evotor.goods.repository.Repository
 import com.example.evotor.goods.utils.Status
 
@@ -20,19 +19,14 @@ import com.example.evotor.goods.utils.Status
 class GoodsListFragment: Fragment() {
 
     private lateinit var binding: FrgmentGoodsBinding
-    private lateinit var repository: Repository
+
     private lateinit var viewModel: GoodsListViewModel
 
     private val adapter by lazy { GoodsAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        repository = Repository()
-        viewModel = ViewModelProvider(this, object: ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return GoodsListViewModel(repository) as T
-            }
-        })[GoodsListViewModel::class.java]
+        viewModel = ViewModelProvider(this)[GoodsListViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -62,11 +56,11 @@ class GoodsListFragment: Fragment() {
                 }
                 Status.SUCCESS -> {
                     binding.loadGoodsProgressbar.visibility = View.GONE
-                    adapter.addAll((event.data as Items).items)
+                    adapter.addAll((event.data as ApiItems).items)
                 }
                 Status.ERROR -> {
                     binding.loadGoodsProgressbar.visibility = View.GONE
-                    Toast.makeText(context, event.throwable?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, event.throwable?.message, Toast.LENGTH_LONG).show()
                 }
             }
         }
