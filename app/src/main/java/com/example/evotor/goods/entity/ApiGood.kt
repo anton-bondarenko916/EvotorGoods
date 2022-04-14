@@ -25,7 +25,7 @@ fun ApiGood.toRoomGood() = RoomGood(
     price = this.price.toDouble(),
     quantity = (this.quantity ?: BigDecimal.ZERO).toDouble(),
     measureName = this.measureName,
-    allowToSell = if (this.allowToSell) { 1 } else { 0 }
+    allowToSell = if (this.allowToSell) { 1 } else { 0 } //TODO Попробовать не переводить в число для boolean
 )
 
 fun ApiGood.toGood() = Good(

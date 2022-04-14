@@ -10,6 +10,8 @@ abstract class GoodDatabase: RoomDatabase() {
 
     abstract fun goodDao(): GoodDao
 
+    //TODO Попробовать TypeConverters с BigDecimal
+
     companion object {
         @Volatile
         private var INSTANCE: GoodDatabase? = null
