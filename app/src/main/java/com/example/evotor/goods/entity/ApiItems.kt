@@ -2,7 +2,7 @@ package com.example.evotor.goods.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Items(
+data class ApiItems(
     @SerializedName("items")
-    val items: ArrayList<Good>
+    val items: List<ApiGood>
 )

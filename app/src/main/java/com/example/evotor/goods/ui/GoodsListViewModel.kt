@@ -1,23 +1,33 @@
 package com.example.evotor.goods.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.evotor.goods.entity.Items
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.evotor.goods.database.GoodDatabase
+import com.example.evotor.goods.entity.Good
 import com.example.evotor.goods.repository.Repository
+import com.example.evotor.goods.utils.Event
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class GoodsListViewModel(private val repository: Repository): ViewModel() {
+class GoodsListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val mutableGoodsResponse: MutableLiveData<Response<Items>> = MutableLiveData()
-    var goodsResponse: LiveData<Response<Items>> = mutableGoodsResponse
+    private val repository: Repository
+    private val mutableGoodsResponse: MutableLiveData<Event<List<Good>>> = MutableLiveData()
+    fun observeGoodsResponse(): LiveData<Event<List<Good>>> = mutableGoodsResponse
 
-    fun getGoods(shopUUID: String, token: String) {
+    init {
+        val goodDao = GoodDatabase.getDatabase(application).goodDao()
+        repository = Repository(goodDao)
+    }
+
+    fun getGoods(shopUUID: String) {
         viewModelScope.launch {
-            mutableGoodsResponse.value = repository.getGoods(shopUUID, token)
-            goodsResponse = mutableGoodsResponse
+            try {
+                mutableGoodsResponse.value = Event.loading()
+                val goods: List<Good> = repository.getGoods(shopUUID)
+                mutableGoodsResponse.value = Event.success(goods)
+            } catch (exception: Exception) {
+                mutableGoodsResponse.value = Event.error(exception)
+            }
         }
     }
 }

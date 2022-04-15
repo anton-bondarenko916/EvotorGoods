@@ -1,6 +1,6 @@
 package com.example.evotor.goods.ui
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,20 +10,20 @@ import com.example.evotor.goods.R
 import com.example.evotor.goods.databinding.SimpleListItemBinding
 import com.example.evotor.goods.entity.Good
 
-class GoodsAdapter(private val goods: ArrayList<Good>): RecyclerView.Adapter<GoodsAdapter.GoodsViewHolder>() {
+class GoodsAdapter : RecyclerView.Adapter<GoodsAdapter.GoodsViewHolder>() {
 
-    private lateinit var context: Context
+    private val goods: MutableList<Good> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): GoodsViewHolder {
-        context = parent.context
         val inflater = LayoutInflater.from(parent.context)
         val binding = SimpleListItemBinding.inflate(inflater, parent, false)
         return GoodsViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: GoodsViewHolder, position: Int) {
         val good = goods[position]
 
@@ -31,26 +31,33 @@ class GoodsAdapter(private val goods: ArrayList<Good>): RecyclerView.Adapter<Goo
             goodNameTextview.text = good.name
             if (!good.allowToSell) {
                 deprecatedSaleTextview.visibility = View.VISIBLE
-                deprecatedSaleTextview.text = context.getString(R.string.sale_deprecated)
+                deprecatedSaleTextview.text = deprecatedSaleTextview.context.getString(R.string.sale_deprecated)
             } else {
                 goodNameTextview.textSize = Constants.TEXT_SIZE
             }
 
             if (good.measureName == "шт") {
-                quantityTextview.text = "${good.quantity.toInt()}${good.measureName}"
+                quantityTextview.text = "${good.quantity.setScale(0)} ${good.measureName}"
             } else {
-                quantityTextview.text = "${good.quantity}${good.measureName}"
+                quantityTextview.text = "${good.quantity} ${good.measureName}"
             }
 
-            goodPriceTextview.text = "${good.price} P."
+            goodPriceTextview.text = "${good.price}" + " P."
         }
 
     }
 
     override fun getItemCount() = goods.size
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun addAll(goods: List<Good>) {
+        this.goods.clear()
+        this.goods.addAll(goods)
+        notifyDataSetChanged()
+    }
+
     class GoodsViewHolder(
         val binding: SimpleListItemBinding
-    ): RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root)
 
 }
