@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.evotor.goods.entity.ApiGood
+import com.example.evotor.goods.entity.Good
 import java.math.BigDecimal
 
 @Entity(
@@ -18,20 +19,19 @@ data class RoomGood(
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "price")
-    val price: Double,
+    val price: BigDecimal,
     @ColumnInfo(name = "quantity")
-    val quantity: Double,
+    val quantity: BigDecimal?,
     @ColumnInfo(name = "measure_name")
     val measureName: String,
     @ColumnInfo(name = "allow_to_sell")
-    val allowToSell: Int
+    val allowToSell: Boolean
 )
 
-fun RoomGood.toApiGood() = ApiGood(
-    id = this.id,
+fun RoomGood.toGood() = Good(
     name = this.name,
-    price = BigDecimal(this.price),
-    quantity = BigDecimal(this.quantity),
+    price = this.price,
+    quantity = this.quantity ?: BigDecimal.ZERO,
     measureName = this.measureName,
-    allowToSell = this.allowToSell == 1
+    allowToSell = this.allowToSell
 )

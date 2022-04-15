@@ -22,10 +22,10 @@ data class ApiGood(
 fun ApiGood.toRoomGood() = RoomGood(
     id = this.id,
     name = this.name,
-    price = this.price.toDouble(),
-    quantity = (this.quantity ?: BigDecimal.ZERO).toDouble(),
+    price = this.price,
+    quantity = this.quantity,
     measureName = this.measureName,
-    allowToSell = if (this.allowToSell) { 1 } else { 0 } //TODO Попробовать не переводить в число для boolean
+    allowToSell = this.allowToSell
 )
 
 fun ApiGood.toGood() = Good(

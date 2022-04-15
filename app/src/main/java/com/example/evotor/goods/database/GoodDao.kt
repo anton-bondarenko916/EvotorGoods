@@ -9,8 +9,7 @@ import androidx.room.Query
 @Dao
 interface GoodDao {
 
-    //TODO OnConflictStrategy.REPLACE - возможно будет правильнее
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItems(items: List<RoomGood>)
 
     @Query("SELECT * FROM items_table")

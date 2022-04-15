@@ -1,16 +1,13 @@
 package com.example.evotor.goods.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 
 @Database(entities = [RoomGood::class], version = 1, exportSchema = false)
+@TypeConverters(BigDecimalTypeConverter::class)
 abstract class GoodDatabase: RoomDatabase() {
 
     abstract fun goodDao(): GoodDao
-
-    //TODO Попробовать TypeConverters с BigDecimal
 
     companion object {
         @Volatile
@@ -31,8 +28,6 @@ abstract class GoodDatabase: RoomDatabase() {
                 INSTANCE = instance
                 return instance
             }
-
         }
     }
-
 }

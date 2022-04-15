@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.evotor.goods.Constants
 import com.example.evotor.goods.databinding.FrgmentGoodsBinding
+import com.example.evotor.goods.entity.ApiGood
 import com.example.evotor.goods.entity.ApiItems
+import com.example.evotor.goods.entity.Good
 import com.example.evotor.goods.repository.Repository
 import com.example.evotor.goods.utils.Status
 
@@ -19,9 +21,7 @@ import com.example.evotor.goods.utils.Status
 class GoodsListFragment: Fragment() {
 
     private lateinit var binding: FrgmentGoodsBinding
-
     private lateinit var viewModel: GoodsListViewModel
-
     private val adapter by lazy { GoodsAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +56,7 @@ class GoodsListFragment: Fragment() {
                 }
                 Status.SUCCESS -> {
                     binding.loadGoodsProgressbar.visibility = View.GONE
-                    adapter.addAll((event.data as ApiItems).items)
+                    adapter.addAll(event.data as List<Good>)
                 }
                 Status.ERROR -> {
                     binding.loadGoodsProgressbar.visibility = View.GONE
