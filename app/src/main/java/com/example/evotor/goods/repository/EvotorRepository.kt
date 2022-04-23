@@ -8,7 +8,7 @@ import com.example.evotor.goods.entity.Good
 import com.example.evotor.goods.entity.toGood
 import com.example.evotor.goods.entity.toRoomGood
 
-class Repository(private val goodDao: GoodDao) {
+class EvotorRepository(private val goodDao: GoodDao) {
 
     suspend fun getGoods(shopUUID: String): List<Good> {
         try {

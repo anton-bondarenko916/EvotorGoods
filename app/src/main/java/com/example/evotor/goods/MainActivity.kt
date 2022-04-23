@@ -2,11 +2,10 @@ package com.example.evotor.goods
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.evotor.goods.databinding.ActivityMainBinding
-import com.example.evotor.goods.ui.GoodsListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,28 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, GoodsListFragment())
-                .commit()
-        }
         updateToolBar()
     }
 
     private fun updateToolBar() {
-        binding.toolbar.title = getString(R.string.goods)
-
-        binding.toolbar.menu.clear()
-        val iconDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(this, R.drawable.settings_button)!!)
-
-        val menuItem = binding.toolbar.menu.add("Menu")
-        menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        menuItem.icon = iconDrawable
-//        menuItem.setOnMenuItemClickListener {
-//            action.onCustomAction.run()
-//            return@setOnMenuItemClickListener true
-//        }
+        val host =  supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = host.navController
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setTitle(R.string.goods)
     }
 }

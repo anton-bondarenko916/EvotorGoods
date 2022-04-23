@@ -5,4 +5,13 @@
     <string name="price_list_item">9 900,00 P</string>
     <string name="sale_deprecated">Запрет продажи</string>
     <string name="goods">Товары</string>
+    <string name="settings">Настройки</string>
+    <string name="monitor_goods">ОТОБРАЖЕНИЕ ТОВАРОВ</string>
+    <string name="list_of_goods">List of goods</string>
+    <string name="list">Списком</string>
+    <string name="big_tile">Крупной\nплиткой</string>
+    <string name="small_tile">Мелкой\nплиткой</string>
+    <string name="name_of_good">name of good</string>
+    <string name="_60_00_p">60,00 P</string>
+    <string name="_52">52шт</string>
 </resources>

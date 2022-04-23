@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/goodsListFragment">
+
+    <fragment
+        android:id="@+id/goodsListFragment"
+        android:name="com.example.evotor.goods.ui.goods.goods.GoodsListFragment"
+        android:label="@string/goods">
+        <action
+            android:id="@+id/action_goodsListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.evotor.goods.ui.goods.settings.SettingsFragment"
+        android:label="@string/settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_goodsListFragment"
+            app:destination="@id/goodsListFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_in" />
+    </fragment>
+</navigation>

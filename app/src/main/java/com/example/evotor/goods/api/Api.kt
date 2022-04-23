@@ -7,6 +7,5 @@ import retrofit2.http.Path
 
 interface Api {
     @GET("stores/{shop-uuid}/products")
-    suspend fun getGoods(
-        @Path("shop-uuid") shopUUID: String): Response<ApiItems>
+    suspend fun getGoods(@Path("shop-uuid") shopUUID: String): Response<ApiItems>
 }
