@@ -14,7 +14,7 @@ import com.example.evotor.goods.databinding.FragmentSettingsBinding
 class SettingsFragment: Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
-    private lateinit var settings: SharedPreferences
+    private lateinit var settings: SharedPreferences //TODO Добавить ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
