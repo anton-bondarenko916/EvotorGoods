@@ -14,7 +14,7 @@ import com.example.evotor.goods.entity.Good
 class GoodsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val goods: MutableList<Good> = mutableListOf()
-    var style: String = ""
+    var style: String = Constants.LIST_STYLE
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

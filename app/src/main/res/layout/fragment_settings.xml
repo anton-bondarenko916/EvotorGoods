@@ -26,46 +26,149 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/monitor_goods_textview"
         android:gravity="center_horizontal"
-        android:padding="16dp"
         android:layout_marginTop="20dp">
 
-        <RadioButton android:id="@+id/radio_list"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/list_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/list"
-            android:background="@drawable/radio_selector"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_marginEnd="16dp"
-            android:padding="16dp"
-            android:drawableTop="@drawable/ic_list"
-            android:button="@color/black_custom"
-            android:layout_gravity="center" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp">
 
-        <RadioButton android:id="@+id/radio_tile"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/big_tile"
-            android:background="@drawable/radio_selector"
-            android:textColor="@color/white"
-            android:layout_marginEnd="16dp"
-            android:padding="16dp"
-            android:textSize="14sp"
-            android:drawableTop="@drawable/ic_big_tiles"
-            android:button="@color/black_custom"
-            android:layout_gravity="center"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/list_button_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_normal"
+                android:paddingStart="27dp"
+                android:paddingEnd="27dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="18dp">
 
-        <RadioButton android:id="@+id/radio_small_tile"
+                <ImageView
+                    android:id="@+id/list_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/ic_list" />
+
+                <RadioButton
+                    android:id="@+id/list_radiobutton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/list_imageview"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/list_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/list"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/big_tile_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/small_tile"
-            android:background="@drawable/radio_selector"
-            android:padding="16dp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:drawableTop="@drawable/ic_small_tiles"
-            android:button="@color/black_custom"
-            android:layout_gravity="center"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/big_tile_button_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_normal"
+                android:paddingStart="27dp"
+                android:paddingEnd="27dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="18dp">
+
+                <ImageView
+                    android:id="@+id/big_tile_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/ic_big_tiles" />
+
+                <RadioButton
+                    android:id="@+id/big_tile_radiobutton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/big_tile_imageview"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/big_tile_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/big_tile"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/small_tile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/small_tile_button_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_normal"
+                android:paddingStart="27dp"
+                android:paddingEnd="27dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="18dp">
+
+                <ImageView
+                    android:id="@+id/small_tile_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/ic_small_tiles" />
+
+                <RadioButton
+                    android:id="@+id/small_tile_radiobutton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/small_tile_imageview"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/small_tile_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/small_tile"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </RadioGroup>
 
     <ImageView
