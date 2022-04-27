@@ -1,9 +1,6 @@
 package com.example.evotor.goods.ui.goods.goods
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -18,12 +15,10 @@ import com.example.evotor.goods.databinding.FragmentGoodsBinding
 import com.example.evotor.goods.entity.Good
 import com.example.evotor.goods.utils.Status
 
-
 class GoodsListFragment: Fragment() {
 
     private lateinit var binding: FragmentGoodsBinding
     private lateinit var viewModel: GoodsListViewModel
-    private lateinit var settings: SharedPreferences
     private lateinit var adapter: GoodsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +33,7 @@ class GoodsListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentGoodsBinding.inflate(inflater, container, false)
-        settings = requireContext().getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
         setUpRecyclerView()
-        Log.d("MYTAG", "onCreateView")
         viewModel.getGoods(Constants.SHOP_UUID)
         observeToGoods()
         setHasOptionsMenu(true)
@@ -48,7 +41,7 @@ class GoodsListFragment: Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        val style = settings.getString(Constants.STYLE, Constants.LIST_STYLE)
+        val style = viewModel.getStyle()
         val layoutManager: RecyclerView.LayoutManager = when(style) {
             Constants.BIG_TILE_STYLE -> {
                 GridLayoutManager(context, 2)
@@ -60,21 +53,14 @@ class GoodsListFragment: Fragment() {
                 LinearLayoutManager(context)
             }
         }
-        adapter.style = style ?: Constants.LIST_STYLE
+        adapter.style = style
         binding.goodsRecyclerview.layoutManager = layoutManager
         binding.goodsRecyclerview.adapter = adapter
-        Log.d("MYTAG", "setUp")
     }
 
     override fun onStart() {
         super.onStart()
         setUpRecyclerView()
-        Log.d("MYTAG", "onStart")
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d("MYTAG", "onViewCreated")
     }
 
     private fun observeToGoods() {
