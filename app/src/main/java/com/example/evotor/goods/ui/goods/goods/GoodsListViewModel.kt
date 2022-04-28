@@ -10,6 +10,14 @@ import com.example.evotor.goods.utils.Event
 import kotlinx.coroutines.launch
 import java.lang.RuntimeException
 
+/**
+ * viewModel { GoodsListViewModel(
+ *      application = applicationContext(),
+ *      evotorRepository = get(),
+ *      sharedPreferencesRepository = get()
+ * ) }
+ */
+
 class GoodsListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val evotorRepository: EvotorRepository
@@ -19,6 +27,12 @@ class GoodsListViewModel(application: Application) : AndroidViewModel(applicatio
     fun observeGoodsResponse(): LiveData<Event<List<Good>>> = mutableGoodsResponse
 
     init {
+        //TODO в КОИН
+//        val dbModule = module {
+//            single<AppDataBase> {
+//                AppDataBase.buildDataBase(androidApplication())
+//            }
+//        }
         val goodDao = GoodDatabase.getDatabase(application).goodDao()
         evotorRepository = EvotorRepository(goodDao)
         sharedPreferencesRepository = SharedPreferencesRepository(application)

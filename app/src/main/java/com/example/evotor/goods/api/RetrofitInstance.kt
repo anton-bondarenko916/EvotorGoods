@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
+    //TODO Реализовать с Koin
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor { chain ->
@@ -30,3 +31,27 @@ object RetrofitInstance {
         retrofit.create(Api::class.java)
     }
 }
+
+//val networkModule = module {
+//    single<OAuthTokenApi> { OAuthTokenApi.provideTokenAPI() }
+//    single<ReceiptApi> {
+//        ReceiptApi.provideReceiptApi(
+//            listInterceptors = provideListInterceptors(get()),
+//            networkConnectionInterceptor = get()
+//        )
+//    }
+//    single<MarketDeviceInfoApi> {
+//        MarketDeviceInfoApi.provideMarketDeviceInfoApi(
+//            provideListInterceptors(get()),
+//            tokenInterceptor = get()
+//        )
+//    }
+//    single<TokenApi> { TokenApi.provideTokenApi() }
+//
+//    single {
+//        NetworkConnectionInterceptor(context = androidContext())
+//    }
+//    single {
+//        TokenInterceptor(userInfoRepository = get(), tokenRepository = get())
+//    }
+//}

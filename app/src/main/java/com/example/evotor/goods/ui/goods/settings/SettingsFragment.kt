@@ -18,7 +18,7 @@ import com.example.evotor.goods.databinding.FragmentSettingsBinding
 class SettingsFragment: Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
-    private lateinit var viewModel: SettingsViewModel
+    private lateinit var viewModel: SettingsViewModel //TODO Реализовать с Koin (private val statisticsViewModel by viewModel<StatisticsViewModel>())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -2,6 +2,7 @@ package com.example.evotor.goods.ui.goods.settings
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.example.evotor.goods.Constants
 import com.example.evotor.goods.repository.SharedPreferencesRepository
 import java.lang.Exception
 import java.lang.RuntimeException
@@ -20,7 +21,7 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
 
     fun getStyle(): String {
         try {
-            return repository.getStyle()!!
+            return repository.getStyle()
         } catch (exception: Exception) {
             throw RuntimeException("Error getting style")
         }
