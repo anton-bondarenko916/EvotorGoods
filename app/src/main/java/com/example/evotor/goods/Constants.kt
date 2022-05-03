@@ -1,6 +1,7 @@
 package com.example.evotor.goods
 
 class Constants {
+    //
     companion object {
         const val BASE_URL = "https://api.evotor.ru/"
         const val TOKEN = "Bearer 02c58fba-78ec-4ef2-8465-c478734ff352"
