@@ -1,14 +1,11 @@
 package com.example.evotor.goods.ui.goods.settings
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.evotor.goods.repository.SharedPreferencesRepository
 import java.lang.Exception
 import java.lang.RuntimeException
 
-class SettingsViewModel(application: Application): AndroidViewModel(application) {
-
-    private val repository: SharedPreferencesRepository = SharedPreferencesRepository(application)
+class SettingsViewModel(private val repository: SharedPreferencesRepository): ViewModel() {
 
     fun saveStyle(style: String) {
         try {

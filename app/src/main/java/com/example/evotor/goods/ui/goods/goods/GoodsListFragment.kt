@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,16 +13,16 @@ import com.example.evotor.goods.R
 import com.example.evotor.goods.databinding.FragmentGoodsBinding
 import com.example.evotor.goods.entity.Good
 import com.example.evotor.goods.utils.Status
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GoodsListFragment: Fragment() {
 
-    private lateinit var binding: FragmentGoodsBinding
-    private lateinit var viewModel: GoodsListViewModel
+    private lateinit var  binding: FragmentGoodsBinding
+    private val viewModel: GoodsListViewModel by viewModel()
     private lateinit var adapter: GoodsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[GoodsListViewModel::class.java]
         adapter = GoodsAdapter()
     }
 

@@ -6,7 +6,7 @@ import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitInstance {
+class RetrofitInstance {
 
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
@@ -18,15 +18,11 @@ object RetrofitInstance {
             }.build()
     }
 
-    private val retrofit by lazy {
+    val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    val api: Api by lazy {
-        retrofit.create(Api::class.java)
     }
 }

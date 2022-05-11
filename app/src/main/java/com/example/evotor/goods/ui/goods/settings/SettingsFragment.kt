@@ -14,16 +14,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.evotor.goods.Constants
 import com.example.evotor.goods.R
 import com.example.evotor.goods.databinding.FragmentSettingsBinding
+import com.example.evotor.goods.ui.goods.goods.GoodsListViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment: Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
-    private lateinit var viewModel: SettingsViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
-    }
+    private val viewModel: SettingsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
